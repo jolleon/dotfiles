@@ -1,2 +1,7 @@
 # dotfiles
-my dotfiles they're not the smartest ones but they're mine
+
+```
+git clone git@github.com:jolleon/dotfiles.git .dotfiles
+cd .dotfiles
+./setup.sh
+```
