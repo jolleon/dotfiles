@@ -20,6 +20,8 @@ syntax on
 
 let mapleader = ","
 
+set wildmenu            "a menu for resolving ambiguous tab-completion
+
 
 " search
 set hlsearch
@@ -36,7 +38,9 @@ set mouse=a
 
 " buffers
 nnoremap <tab> :bn<CR>
-nnoremap <S-tab> :bp<CR>
+nnoremap q :bp<CR>
+set hidden
+set autoread
 " shortcut for Bbye
 nnoremap <Leader>q :Bdelete<CR>
 
