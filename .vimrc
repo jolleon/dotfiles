@@ -9,6 +9,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'moll/vim-bbye'
 " smart tmux + vim pane switching
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'saltstack/salt-vim'
 call plug#end()
 
 
@@ -34,6 +35,13 @@ nnoremap <leader>/ :noh<cr>
 " nnoremap <C-L> <C-W><C-L>
 " nnoremap <C-H> <C-W><C-H>
 
+" window resizing
+nnoremap + :resize +10<CR>
+nnoremap - :resize -10<CR>
+nnoremap > :vertical resize +10<CR>
+nnoremap < :vertical resize -10<CR>
+
+
 set mouse=a
 
 " buffers
@@ -55,4 +63,3 @@ set shiftwidth=4
 
 " wrap to prev/next line when moving cursor
 set whichwrap+=<,>,h,l,[,]
-
