@@ -5,6 +5,7 @@ alias ll='ls -al'
 alias gs='git status'
 alias cdw='cd ~/ring/web'
 
+source ~/.dotfiles/git-prompt.sh
 
 PS1='\[\e[34m\]\h\[\e[00m\]:\[\e[33m\]\w\[\e[31m\]$(__git_ps1)\[\e[00m\] '
 
