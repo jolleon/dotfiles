@@ -6,6 +6,7 @@ alias gs='git status'
 alias cdw='cd ~/ring/web'
 
 source ~/.dotfiles/git-prompt.sh
+source ~/.dotfiles/git-completion.bash
 
 if [[ `hostname` == Juless-MBP* ]]
 then
