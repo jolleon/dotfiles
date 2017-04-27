@@ -63,3 +63,7 @@ set shiftwidth=4
 
 " wrap to prev/next line when moving cursor
 set whichwrap+=<,>,h,l,[,]
+
+
+vnoremap <leader>c :w !pbcopy<cr><cr>
+noremap  <leader>v :r !pbpaste<cr><cr>
