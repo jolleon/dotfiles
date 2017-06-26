@@ -11,17 +11,17 @@ source ~/.dotfiles/git-completion.bash
 # Fancy colors depending on hostname
 _HOST_SEED=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print total}')
 _HOST_COLORS=($(echo $_HOST_SEED | awk '{ srand($1);
-for(i=0;i<6;i++){
-    c[i]=31+i
+for(i=0;i<4;i++){
+    c[i]=33+i
 }
-for(i=0;i<5;i++){
-    j=i+int(rand()*(6-i));
+for(i=0;i<3;i++){
+    j=i+int(rand()*(4-i));
     tmp=c[i];
     c[i]=c[j];
     c[j]=tmp;
     print c[i]
 };
-print c[5] }'))
+print c[3] }'))
 
 
 # Function to show active conda environment in PS1
@@ -39,7 +39,7 @@ fi
 }
 
 
-PS1='\[\e[${_HOST_COLORS[0]}m\]\h\[\e[00m\]:\[\e[${_HOST_COLORS[1]}m\]\w$(__condaEnv)\[\e[${_HOST_COLORS[2]}m\]$(__git_ps1)\[\e[00m\] '
+PS1='\[\e[90m\]\t\[\e[00m\] \[\e[${_HOST_COLORS[0]}m\]\h\[\e[00m\]:\[\e[${_HOST_COLORS[1]}m\]\w$(__condaEnv)\[\e[${_HOST_COLORS[2]}m\]$(__git_ps1)\[\e[00m\] '
 
 
 if [ -f ~/.bashenv ]; then
@@ -51,3 +51,5 @@ alias actenv='source activate ${PWD##*/}'
 alias deact='source deactivate'
 
 # source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+
+export PATH=~/.local/bin:$PATH
