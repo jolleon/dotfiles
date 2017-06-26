@@ -53,3 +53,27 @@ alias deact='source deactivate'
 # source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 
 export PATH=~/.local/bin:$PATH
+
+
+K_REALMS=(dev staging prod paloalto)
+function k {
+    if [[ ! ${K_REALMS[*]} =~ "$1" ]]; then
+        echo "env must be one of: ${K_REALMS[*]}"
+        return
+    fi
+    kubectl config set current-context $1.k8s.people.ai
+    kubectl config current-context
+    case $2 in
+        p)
+            pod=`kubectl get pods | grep $3 | cut -d ' ' -f1`
+            echo "Port-forwarding $4 to $pod..."
+            (sleep 2; /usr/bin/open -a "/Applications/Google Chrome.app" "http://localhost:$4") &
+            while true
+                do kubectl port-forward $pod $4
+            done
+            ;;
+        *)
+            echo Unknown option: "$2"
+            ;;
+    esac
+}
