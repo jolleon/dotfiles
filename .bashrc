@@ -1,11 +1,7 @@
+# Basic aliases
 alias ls='ls -F'
 alias l='ls'
 alias ll='ls -al'
-
-alias gs='git status'
-
-source ~/.dotfiles/git-prompt.sh
-source ~/.dotfiles/git-completion.bash
 
 
 # Fancy colors depending on hostname
@@ -23,7 +19,6 @@ for(i=0;i<3;i++){
 };
 print c[3] }'))
 
-
 # Function to show active conda environment in PS1
 # with flashy bg color if env doesn't match current repo based on PWD
 # (assumes conda env names match repo dir names)
@@ -38,23 +33,25 @@ if [ $CONDA_DEFAULT_ENV ]; then
 fi
 }
 
-
 PS1='\[\e[90m\]\t\[\e[00m\] \[\e[${_HOST_COLORS[0]}m\]\h\[\e[00m\]:\[\e[${_HOST_COLORS[1]}m\]\w$(__condaEnv)\[\e[${_HOST_COLORS[2]}m\]$(__git_ps1)\[\e[00m\] '
 
 
-if [ -f ~/.bashenv ]; then
-    source ~/.bashenv
-fi
+# Make Git better
+alias gs='git status'
+source ~/.dotfiles/git-prompt.sh
+source ~/.dotfiles/git-completion.bash
 
-# conda env shortcuts
+
+# Make Docker better
+alias dclean="docker ps -a | tail +2 | cut -d ' ' -f1 | xargs docker rm"
+
+
+# Make Conda better
 alias actenv='source activate ${PWD##*/}'
 alias deact='source deactivate'
 
-# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 
-export PATH=~/.local/bin:$PATH
-
-
+# Make Kubernetes better
 K_REALMS=(dev staging prod paloalto)
 function k {
     if [[ ! ${K_REALMS[*]} =~ "$1" ]]; then
@@ -77,3 +74,9 @@ function k {
             ;;
     esac
 }
+
+
+# put machine dependent confis in .bashenv
+if [ -f ~/.bashenv ]; then
+    source ~/.bashenv
+fi
