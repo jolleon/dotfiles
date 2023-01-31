@@ -47,36 +47,6 @@ alias dclean="docker ps -a | tail +2 | cut -d ' ' -f1 | xargs docker rm"
 alias dkill="docker ps -a | tail +2 | cut -d ' ' -f1 | xargs docker stop"
 
 
-# Make Conda better
-alias actenv='source activate ${PWD##*/}'
-alias deact='source deactivate'
-
-
-# Make Kubernetes better
-K_REALMS=(dev staging prod paloalto)
-function k {
-    if [[ ! ${K_REALMS[*]} =~ "$1" ]]; then
-        echo "env must be one of: ${K_REALMS[*]}"
-        return
-    fi
-    kubectl config set current-context $1.k8s.people.ai
-    kubectl config current-context
-    case $2 in
-        p)
-            pod=`kubectl get pods | grep $3 | cut -d ' ' -f1`
-            echo "Port-forwarding $4 to $pod..."
-            (sleep 2; /usr/bin/open -a "/Applications/Google Chrome.app" "http://localhost:$4") &
-            while true
-                do kubectl port-forward $pod $4
-            done
-            ;;
-        *)
-            echo Unknown option: "$2"
-            ;;
-    esac
-}
-
-
 alias jupyter='docker run --rm -v `pwd`:/home/jovyan/work  -p 8888:8888 jupyter/scipy-notebook:17aba6048f44'
 
 # make sure ipython uses the local venv
