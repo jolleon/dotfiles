@@ -50,8 +50,6 @@ alias dclean="docker ps -a | tail +2 | cut -d ' ' -f1 | xargs docker rm"
 alias dkill="docker ps -a | tail +2 | cut -d ' ' -f1 | xargs docker stop"
 
 
-alias jupyter='docker run --rm -v `pwd`:/home/jovyan/work  -p 8888:8888 jupyter/scipy-notebook:17aba6048f44'
-
 # make sure ipython uses the local venv
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
