@@ -33,7 +33,10 @@ if [ $CONDA_DEFAULT_ENV ]; then
 fi
 }
 
-PS1='\[\e[90m\]\t\[\e[00m\] \[\e[${_HOST_COLORS[0]}m\]\h\[\e[00m\]:\[\e[${_HOST_COLORS[1]}m\]\w$(__condaEnv)\[\e[${_HOST_COLORS[2]}m\]$(__git_ps1)\[\e[00m\] '
+# prompt with conda:
+# PS1='\[\e[90m\]\t\[\e[00m\] \[\e[${_HOST_COLORS[0]}m\]\h\[\e[00m\]:\[\e[${_HOST_COLORS[1]}m\]\w$(__condaEnv)\[\e[${_HOST_COLORS[2]}m\]$(__git_ps1)\[\e[00m\] '
+
+PS1='\[\e[90m\]\t\[\e[00m\] \[\e[${_HOST_COLORS[0]}m\]\h\[\e[00m\]:\[\e[${_HOST_COLORS[1]}m\]\w\[\e[${_HOST_COLORS[2]}m\]$(__git_ps1)\[\e[00m\] '
 
 
 # Make Git better
