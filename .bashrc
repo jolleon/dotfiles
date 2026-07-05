@@ -57,3 +57,6 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 if [ -f ~/.bashenv ]; then
     source ~/.bashenv
 fi
+. "$HOME/.cargo/env"
+
+
